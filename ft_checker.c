@@ -92,10 +92,18 @@ t_lnum	*ft_read_arg(int ac, char **av)
 	{
 		if (ft_validope(line) == 0)
 		{
+			free(tab);
 			ft_free_pile(pile);
 			return (ft_error(2));
 		}
 		pile = ft_doope(pile, line, tab);
+		free(line);
 	}
-	return (ft_checkpile(pile));
+	if (ft_checkpile(pile))
+		ft_putendl("OK");
+	else
+		ft_putendl("KO");
+	ft_free_pile(pile);
+	free(tab);
+	return (0);
 }

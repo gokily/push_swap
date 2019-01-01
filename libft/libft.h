@@ -106,4 +106,7 @@ char				*ft_size_t2a_base(size_t nb, char *base);
 char				*ft_ull2a_base(unsigned long long n, char *base);
 long long			ft_intpart_double(long double nb);
 long double			ft_round_double(long double nb, size_t acc);
+
+int					get_next_line(const int fd, char **line);
+
 #endif

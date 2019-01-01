@@ -9,10 +9,9 @@ void	ft_free_pile(t_pile pile)
 	return ;
 }
 
-
 int		ft_checkpile(t_pile pile)
 {
 	if (pile.b != NULL)
 		return (0);
-	return (ft_lnum_is_sort(pile.a))
+	return (ft_lnum_is_sort(pile.a));
 }

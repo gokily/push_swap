@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdlib.h>
 
 t_lnum	*ft_lnum_new(int n)
 {
@@ -28,13 +27,56 @@ void	ft_addback_lnum(t_lnum **lst, t_lnum *elem)
 	return ;
 }
 
+void	ft_lnum_swap_top(t_lnum	*lst)
+{
+	int		tmp;
+
+	if (lst != NULL && lst->next != NULL)
+	{
+		tmp = lst->n;
+		lst->n = lst->next->n;
+		lst->next->n = tmp;
+	}
+	return ;
+}
+
+void	ft_lnum_rotate(t_lnum **lst)
+{
+	t_lnum	*tmp;
+
+	tmp = *lst;
+	if (tmp != NULL && tmp->next != NULL)
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = *lst;
+		*lst = (*lst)->next;
+		tmp->next->next = NULL;
+	}
+	return ;
+}
+
+void	ft_lnum_rrotate(t_lnum **lst)
+{
+	t_lnum	*tmp;
+
+	tmp = *lst;
+	if (tmp != NULL && tmp->next != NULL)
+	{
+		while (tmp->next->next != NULL)
+			tmp = tmp->next;
+		tmp->next->next = *lst;
+		*lst = tmp->next;
+		tmp->next = NULL;
+	}
+	return ;
+}
+
 int		ft_lnum_is_sort(t_lnum *lst)
 {
-	int	i;
-
 	if (lst->next == NULL)
 		return (1);
-	while (lst->next->next != NULL)
+	while (lst->next != NULL)
 	{
 		if (lst->n > lst->next->n)
 			return (0);
