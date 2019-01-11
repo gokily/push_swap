@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_operation.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/11 14:15:05 by gly               #+#    #+#             */
+/*   Updated: 2019/01/11 15:10:48 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "ps_operation.h"
 #include <stdlib.h>
@@ -51,7 +63,7 @@ t_opp	*ft_define_ope(void)
 	return (tab);
 }
 
-t_pile	ft_doope(t_pile pile, char *line, t_opp *tab)
+t_pile	*ft_doope(t_pile *pile, char *line, t_opp *tab)
 {
 	int		i;
 
@@ -62,5 +74,22 @@ t_pile	ft_doope(t_pile pile, char *line, t_opp *tab)
 			return (tab[i].fct(pile));
 		i++;
 	}
+	return (pile);
+}
+
+t_pile	*ft_add_ope(t_dope *sol, t_pile *pile, int id)
+{
+	t_lope	*new;
+	static t_opp	*opptab = NULL;
+	
+	if (opptab == NULL)
+		opptab = ft_define_ope();
+	if (!(new = malloc(sizeof(t_lope))))
+		return (NULL);
+	new->id = id;
+	new->next = NULL;
+	sol->tail->next = new;
+	sol->tail = new;
+	pile = opptab[id].fct(pile);
 	return (pile);
 }

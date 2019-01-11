@@ -12,23 +12,45 @@ SRC	=	ft_checker.c	\
 		ft_operation_p.c	\
 		ft_operation_r.c	\
 		ft_operation_rr.c	\
+		ps_next_line.c	\
+		ft_parse_arg.c	\
+		ft_print_solution.c	\
+		ft_get_solution.c	\
+		ft_push_half.c	\
+		ft_pushswap.c	\
 
 CC	=	gcc
 
-#CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
-CFLAGS	=	-Wall -Wextra -Werror -g
+CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g
+#CFLAGS	=	-Wall -Wextra -Werror -g
 
 OBJ = $(SRC:.c=.o)
 
 CHECKER_O	=	ft_checker.o	\
-		ft_pile_manipulators.o	\
-		ft_error.o	\
-		ft_lnum_manipulators.o	\
-		ft_operation.o	\
-		ft_operation_s.o	\
-		ft_operation_p.o	\
-		ft_operation_r.o	\
-		ft_operation_rr.o	\
+				ft_pile_manipulators.o	\
+				ft_error.o	\
+				ft_lnum_manipulators.o	\
+				ft_operation.o	\
+				ft_operation_s.o	\
+				ft_operation_p.o	\
+				ft_operation_r.o	\
+				ft_operation_rr.o	\
+				ps_next_line.o	\
+				ft_parse_arg.o	\
+
+PUSHSWAP_O	=	ft_get_solution.o	\
+				ft_error.o	\
+				ft_lnum_manipulators.o	\
+				ft_operation.o	\
+				ft_operation_s.o	\
+				ft_operation_p.o	\
+				ft_operation_r.o	\
+				ft_operation_rr.o	\
+				ft_pile_manipulators.o	\
+				ft_push_half.o	\
+				ft_pushswap.o	\
+				ft_parse_arg.o	\
+				ft_print_solution.o	\
 
 LIBFT	=	libft/libft.a
 
@@ -42,8 +64,8 @@ all: $(LIBFT) $(CHECKER) $(PUSH_SWAP)
 $(CHECKER): $(CHECKER_O)
 	$(CC) $(CFLAGS) -o $(CHECKER) $(CHECKER_O) $(LIBFTFLAG)
 
-$(PUSH_SWAP):
-	echo "Not yet"
+$(PUSH_SWAP): $(PUSHSWAP_O)
+	$(CC) $(CFLAGS) -o $(PUSH_SWAP) $(PUSHSWAP_O) $(LIBFTFLAG) ft_sort_inttab.c print_pile.c
 
 $(LIBFT):
 	make -C libft

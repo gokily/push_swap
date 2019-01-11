@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_operation_r.c                                   :+:      :+:    :+:   */
+/*   ft_pushswap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 16:40:52 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 16:41:46 by gly              ###   ########.fr       */
+/*   Created: 2019/01/11 10:04:52 by gly               #+#    #+#             */
+/*   Updated: 2019/01/11 15:39:08 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_pile	*ft_ra(t_pile *pile)
+int		main(int ac, char **av)
 {
-	ft_lnum_rotate(&pile->a);
-	return (pile);
-}
+	t_lnum	*lst;
+	t_pile	pile;
 
-t_pile	*ft_rb(t_pile *pile)
-{
-	ft_lnum_rotate(&pile->b);
-	return (pile);
-}
-
-t_pile	*ft_rr(t_pile *pile)
-{
-	ft_lnum_rotate(&pile->a);
-	ft_lnum_rotate(&pile->b);
-	return (pile);
+	if (ac == 1 || ft_validarg(ac, av) == 0)
+		return (ft_error(1));
+	if (!(lst = ft_read_arg(ac, av)))
+		return (ft_error(1));
+	pile.a = lst;
+	pile.b = NULL;
+	ft_print_solution(ft_get_solution(&pile, ac - 1));
+	return (1);
 }

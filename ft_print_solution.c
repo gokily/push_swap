@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_operation_r.c                                   :+:      :+:    :+:   */
+/*   ft_print_solution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 16:40:52 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 16:41:46 by gly              ###   ########.fr       */
+/*   Created: 2019/01/11 15:34:55 by gly               #+#    #+#             */
+/*   Updated: 2019/01/11 15:38:20 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ps_operation.h"
 
-t_pile	*ft_ra(t_pile *pile)
+void	ft_print_solution(t_dope *sol)
 {
-	ft_lnum_rotate(&pile->a);
-	return (pile);
-}
+	t_lope	*elem;
+	t_opp	*opptab;
 
-t_pile	*ft_rb(t_pile *pile)
-{
-	ft_lnum_rotate(&pile->b);
-	return (pile);
-}
-
-t_pile	*ft_rr(t_pile *pile)
-{
-	ft_lnum_rotate(&pile->a);
-	ft_lnum_rotate(&pile->b);
-	return (pile);
+	elem = sol->head->next;
+	opptab = ft_define_ope();
+	while (elem != NULL)
+	{
+		ft_putendl(opptab[elem->id].type);
+		elem = elem->next;
+	}
 }
