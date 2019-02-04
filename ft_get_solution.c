@@ -42,9 +42,6 @@ int		ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n)
 
 int		ft_sort_pile(t_pile *pile, t_dope *sol, int pd, int n)
 {
-	int		i;
-
-	i = 0;
 	if (n <= 2)
 		return (ft_sort_end(pile, sol, pd, n));
 	if (!ft_push_half(pile, sol, pd, n) ||

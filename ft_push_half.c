@@ -30,35 +30,36 @@ int		ft_findmedian(t_pile pile, int pd, int n)
 	}
 	ft_sort_inttab(sorted, n);
 	median = sorted[n / 2 - 1];
-	printf("n is %d and median is %d\n", n, median);
 	return (median);
 }
 
 t_pile	*ft_push_half2b(t_pile *pile, t_dope *sol, int n)
 {
-	int		i;
 	int		median;
 	int		half;
+	int		n_push;
+	int		n_rotate;
 
-	i = 0;
-	printf("\nIn push half 2 b, n is %d\n", n);
-	print_pile(*pile);
+	n_push = 0;
+	n_rotate = 0;
+	half = n / 2;
 	median = ft_findmedian(*pile, APILE, n);
-	while (i++ < n)
+	while (n_push < half)
 	{
 		if (pile->a->n <= median)
 		{
-			printf("Moving %d to pile B\n", pile->a->n);
 			pile = ft_add_ope(sol, pile, PB);
+			n_push++;
 		}
 		else
+		{
 			pile = ft_add_ope(sol, pile, NRA);
+			n_rotate++;
+		}
 		if (pile == NULL)
 			return (NULL);
 	}
-	i = 0;
-	half = n / 2 + n % 2;
-	while (i++ < half)
+	while (n_rotate-- > 0)
 	{
 		if (!(pile = ft_add_ope(sol, pile, RRA)))
 			return (NULL);
@@ -68,30 +69,31 @@ t_pile	*ft_push_half2b(t_pile *pile, t_dope *sol, int n)
 
 t_pile	*ft_push_half2a(t_pile *pile, t_dope *sol, int n)
 {
-	int		i;
+	int		n_push;
+	int		n_rotate;
 	int		median;
 	int		half;
 
-	i = 0;
-	printf("\nIn push half 2 a, n is %d\n", n);
-	print_pile(*pile);
-
+	n_push = 0;
+	n_rotate = 0;
+	half = n / 2 + n % 2;
 	median = ft_findmedian(*pile, BPILE, n);
-	while (i++ < n)
+	while (n_push < half)
 	{
 		if (pile->b->n > median)
 		{
-			printf("Moving %d to pile A\n", pile->b->n);
 			pile = ft_add_ope(sol, pile, PA);
+			n_push++;
 		}
 		else
+		{
 			pile = ft_add_ope(sol, pile, NRB);
+			n_rotate++;
+		}
 		if (pile == NULL)
 			return (NULL);
 	}
-	i = 0;
-	half = n / 2;
-	while (i++ < half)
+	while (n_rotate-- > 0)
 	{
 		if (!(pile = ft_add_ope(sol, pile, RRB)))
 			return (NULL);
