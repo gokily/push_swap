@@ -54,6 +54,7 @@ void    ft_print_solution(t_dope *sol);
 
 t_pile *ft_push_half(t_pile *pile, t_dope *sol, int pd, int n);
 
+int		ft_pile_is_sorted(t_pile *pile, t_dope *sol);
 
 void	ft_sort_inttab(int *tab, int n);
 

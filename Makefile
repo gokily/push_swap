@@ -18,6 +18,7 @@ SRC	=	ft_checker.c	\
 		ft_get_solution.c	\
 		ft_push_half.c	\
 		ft_pushswap.c	\
+		ft_pile_is_sorted.c	\
 
 CC	=	gcc
 
@@ -51,6 +52,7 @@ PUSHSWAP_O	=	ft_get_solution.o	\
 				ft_pushswap.o	\
 				ft_parse_arg.o	\
 				ft_print_solution.o	\
+				ft_pile_is_sorted.o	\
 
 LIBFT	=	libft/libft.a
 

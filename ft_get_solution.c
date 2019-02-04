@@ -42,6 +42,8 @@ int		ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n)
 
 int		ft_sort_pile(t_pile *pile, t_dope *sol, int pd, int n)
 {
+	if (ft_pile_is_sorted(pile, sol))
+		return (1);
 	if (n <= 2)
 		return (ft_sort_end(pile, sol, pd, n));
 	if (!ft_push_half(pile, sol, pd, n) ||
@@ -63,7 +65,7 @@ t_dope	*ft_get_solution(t_pile *pile, int n)
 		return (NULL);
 	}
 	first->next = NULL;
-	first->id = 55;
+	first->id = 999;
 	sol->head = first;
 	sol->tail = first;
 	if (!(ft_sort_pile(pile, sol, APILE, n)))
