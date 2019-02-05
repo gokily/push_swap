@@ -15,7 +15,7 @@
 int		ft_int_array(const char *str)
 {
 	int		i;
-	long 	nb;
+	long 	long nb;
 	int		sign;
 
 	i = 0;
@@ -25,6 +25,8 @@ int		ft_int_array(const char *str)
 		return (0);
 	if (str[i] == '+' || str[i] == '-')
 		i++;
+	if (str[i] == '\0')
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (str[i] < '0' && str[i] > '9')
