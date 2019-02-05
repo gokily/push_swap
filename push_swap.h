@@ -56,7 +56,14 @@ t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n);
 
 int		ft_pile_is_sorted(t_pile *pile, t_dope *sol);
 
-void	ft_sort_inttab(int *tab, int n);
+t_pile *ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n);
+t_pile  *ft_sort_three(t_pile *pile, t_dope *sol, int pd, int flag);
 
+// These functions need to be included in the libft
+void	ft_sort_inttab(int *tab, int n);
+int   ft_int_is_bigger(int first, int second);
+int   ft_int_is_smaller(int first, int second);
+
+// Debug function
 void    print_pile(t_pile pile);
 #endif

@@ -24,14 +24,14 @@
 # define RROT 4
 # define NRR 5
 # define RRR 6
-# define SA 1
-# define SB -1
-# define PA 2
-# define PB -2
-# define NRA 3
-# define NRB -3
-# define RRA 4
-# define RRB -4
+# define SA SWAP
+# define SB -SWAP
+# define PA PUSH
+# define PB -PUSH
+# define NRA NROT
+# define NRB -NROT
+# define RRA RROT
+# define RRB -RROT
 
 typedef t_pile	*(*t_funptr)(t_pile*);
 

@@ -1,16 +1,6 @@
 #include "push_swap.h"
 #include "ps_operation.h"
 
-int   ft_int_is_bigger(int first, int second)
-{
-  return (first > second ? 1 : 0);
-}
-
-int   ft_int_is_smaller(int first, int second)
-{
-  return (first < second ? 1 : 0);
-}
-
 int   ft_lnum_fsorted(t_lnum *lst, int (*fct)(int, int))
 {
   t_lnum *tmp;

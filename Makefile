@@ -19,6 +19,8 @@ SRC	=	ft_checker.c	\
 		ft_push_half.c	\
 		ft_pushswap.c	\
 		ft_pile_is_sorted.c	\
+		ft_sort_end.c	\
+		ft_sort_three.c	\
 
 CC	=	gcc
 
@@ -53,6 +55,8 @@ PUSHSWAP_O	=	ft_get_solution.o	\
 				ft_parse_arg.o	\
 				ft_print_solution.o	\
 				ft_pile_is_sorted.o	\
+				ft_sort_end.o	\
+				ft_sort_three.o	\
 
 LIBFT	=	libft/libft.a
 
@@ -64,10 +68,10 @@ all: $(LIBFT) $(CHECKER) $(PUSH_SWAP)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(CHECKER): $(CHECKER_O)
-	$(CC) $(CFLAGS) -o $(CHECKER) $(CHECKER_O) $(LIBFTFLAG)
+	$(CC) $(CFLAGS) -o $(CHECKER) $(CHECKER_O) $(LIBFTFLAG) print_pile.c
 
 $(PUSH_SWAP): $(PUSHSWAP_O)
-	$(CC) $(CFLAGS) -o $(PUSH_SWAP) $(PUSHSWAP_O) $(LIBFTFLAG) ft_sort_inttab.c print_pile.c
+	$(CC) $(CFLAGS) -o $(PUSH_SWAP) $(PUSHSWAP_O) $(LIBFTFLAG) ft_sort_inttab.c ft_int_comparators.c print_pile.c
 
 $(LIBFT):
 	make -C libft

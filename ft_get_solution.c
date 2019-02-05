@@ -13,39 +13,16 @@
 #include "push_swap.h"
 #include "ps_operation.h"
 
-int		ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n)
-{
-	//print_pile(*pile);
-	if (n == 1)
-	{
-		if (pd == BPILE)
-			pile = ft_add_ope(sol, pile, PA);
-		return (pile == NULL ? 0 : 1);
-	}
-	if (pd == APILE)
-	{
-		if (pile->a->n > pile->a->next->n)
-			pile = ft_add_ope(sol, pile, SA);
-		return (pile == NULL ? 0 : 1);
-	}
-	else
-	{
-		if (pile->b->n < pile->b->next->n)
-			pile = ft_add_ope(sol, pile, SB);
-		if (pile == NULL || ft_add_ope(sol, pile, PA) == NULL ||
-				ft_add_ope(sol, pile, PA) == NULL)
-			return (0);
-		return (1);
-	}
-}
-
 int		ft_sort_pile(t_pile *pile, t_dope *sol, int pd, int n)
 {
-	printf("Sorting fd =%d, and n is %d\n", pd, n);
+	//printf("Sorting fd =%d, and n is %d\n", pd, n);
 	if (ft_pile_is_sorted(pile, sol))
 		return (1);
-	if (n <= 2)
-		return (ft_sort_end(pile, sol, pd, n));
+	if (n <= 5)
+	{
+		pile = ft_sort_end(pile, sol, pd, n);
+		return (pile == NULL ? 0 : 1);
+	}
 	if (!ft_push_half2pd(pile, sol, -pd, n) ||
 			!ft_sort_pile(pile, sol, APILE, n / 2 + n % 2))
 		return (0);
@@ -70,5 +47,6 @@ t_dope	*ft_get_solution(t_pile *pile, int n)
 	sol->tail = first;
 	if (!(ft_sort_pile(pile, sol, APILE, n)))
 		return (NULL);
+	//print_pile(*pile);
 	return (sol);
 }

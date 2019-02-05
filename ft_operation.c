@@ -85,6 +85,8 @@ t_pile	*ft_add_ope(t_dope *sol, t_pile *pile, int id)
 	
 	if (opptab == NULL)
 		opptab = ft_define_ope();
+	if (pile == NULL)
+		return (NULL);
 	if (!(new = malloc(sizeof(t_lope))))
 		return (NULL);
 	new_id = id + 4;

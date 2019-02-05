@@ -35,6 +35,7 @@ int		ft_findmedian(t_pile pile, int pd, int n)
 
 t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 {
+	static	int	first = 1;
 	int		median;
 	int		half;
 	int		n_push;
@@ -58,6 +59,11 @@ t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 		}
 		if (pile == NULL)
 			return (NULL);
+	}
+	if (first == 1)
+	{
+		first = 0;
+		return (pile);
 	}
 	while (n_rotate-- > 0)
 	{
