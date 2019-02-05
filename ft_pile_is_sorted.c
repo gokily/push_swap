@@ -1,24 +1,17 @@
 #include "push_swap.h"
 #include "ps_operation.h"
 
-int   ft_lnum_sorted_incr(t_lnum *lst)
+int   ft_int_is_bigger(int first, int second)
 {
-  t_lnum *tmp;
-  
-  if (lst == NULL || lst->next == NULL)
-    return (1);
-  tmp = lst;
-  while (tmp->next != NULL)
-  {
-    if (tmp->n > tmp->next->n)
-      return (0);
-    tmp = tmp->next;
-  }
-  return (1);
+  return (first > second ? 1 : 0);
 }
 
-// this can be refactor to take a function as an argument. So we can combine the function above with it.
-int   ft_lnum_sorted_decr(t_lnum *lst)
+int   ft_int_is_smaller(int first, int second)
+{
+  return (first < second ? 1 : 0);
+}
+
+int   ft_lnum_fsorted(t_lnum *lst, int (*fct)(int, int))
 {
   t_lnum *tmp;
   
@@ -27,7 +20,7 @@ int   ft_lnum_sorted_decr(t_lnum *lst)
   tmp = lst;
   while (tmp->next != NULL)
   {
-    if (tmp->n < tmp->next->n)
+    if (fct(tmp->n, tmp->next->n))
       return (0);
     tmp = tmp->next;
   }
@@ -37,8 +30,8 @@ int   ft_lnum_sorted_decr(t_lnum *lst)
 int		ft_pile_is_sorted(t_pile *pile, t_dope *sol)
 {
 	if (pile->b == NULL)
-	  return (ft_lnum_sorted_incr(pile->a));
-  if (ft_lnum_sorted_incr(pile->a) && ft_lnum_sorted_decr(pile->b))
+	  return (ft_lnum_fsorted(pile->a, &ft_int_is_bigger));
+  if (ft_lnum_fsorted(pile->a, &ft_int_is_bigger) && ft_lnum_fsorted(pile->b, &ft_int_is_smaller))
   {
     while (pile->b != NULL)
     {
