@@ -15,8 +15,7 @@
 
 int		ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n)
 {
-	printf("#In ft_sort_end, pd is %d and n is %d\n", pd, n);
-	print_pile(*pile);
+	//print_pile(*pile);
 	if (n == 1)
 	{
 		if (pd == BPILE)
@@ -42,11 +41,12 @@ int		ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n)
 
 int		ft_sort_pile(t_pile *pile, t_dope *sol, int pd, int n)
 {
+	printf("Sorting fd =%d, and n is %d\n", pd, n);
 	if (ft_pile_is_sorted(pile, sol))
 		return (1);
 	if (n <= 2)
 		return (ft_sort_end(pile, sol, pd, n));
-	if (!ft_push_half(pile, sol, pd, n) ||
+	if (!ft_push_half2pd(pile, sol, -pd, n) ||
 			!ft_sort_pile(pile, sol, APILE, n / 2 + n % 2))
 		return (0);
 	return (ft_sort_pile(pile, sol, BPILE, n / 2));

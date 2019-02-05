@@ -16,17 +16,22 @@
 
 # define APILE 1
 # define BPILE -1
-# define SA 0
-# define SB 1
-# define SS 2
-# define PA 3
-# define PB 4
-# define NRA 5
-# define NRB 6
-# define NRR 7
-# define RRA 8
-# define RRB 9
-# define RRR 10
+
+# define SS 0
+# define SWAP 1
+# define PUSH 2
+# define NROT 3
+# define RROT 4
+# define NRR 5
+# define RRR 6
+# define SA 1
+# define SB -1
+# define PA 2
+# define PB -2
+# define NRA 3
+# define NRB -3
+# define RRA 4
+# define RRB -4
 
 typedef t_pile	*(*t_funptr)(t_pile*);
 

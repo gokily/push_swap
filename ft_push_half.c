@@ -33,7 +33,7 @@ int		ft_findmedian(t_pile pile, int pd, int n)
 	return (median);
 }
 
-t_pile	*ft_push_half2b(t_pile *pile, t_dope *sol, int n)
+t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 {
 	int		median;
 	int		half;
@@ -42,18 +42,18 @@ t_pile	*ft_push_half2b(t_pile *pile, t_dope *sol, int n)
 
 	n_push = 0;
 	n_rotate = 0;
-	half = n / 2;
-	median = ft_findmedian(*pile, APILE, n);
+	half = pd == APILE ? n / 2 + n % 2 : n / 2;
+	median = ft_findmedian(*pile, -pd, n);
 	while (n_push < half)
 	{
-		if (pile->a->n <= median)
+		if (pd == BPILE ? pile->a->n <= median : pile->b->n > median)
 		{
-			pile = ft_add_ope(sol, pile, PB);
+			pile = ft_add_ope(sol, pile, PUSH * pd);
 			n_push++;
 		}
 		else
 		{
-			pile = ft_add_ope(sol, pile, NRA);
+			pile = ft_add_ope(sol, pile, NROT * -pd);
 			n_rotate++;
 		}
 		if (pile == NULL)
@@ -61,50 +61,8 @@ t_pile	*ft_push_half2b(t_pile *pile, t_dope *sol, int n)
 	}
 	while (n_rotate-- > 0)
 	{
-		if (!(pile = ft_add_ope(sol, pile, RRA)))
+		if (!(pile = ft_add_ope(sol, pile, RROT * -pd)))
 			return (NULL);
 	}
 	return (pile);
-}
-
-t_pile	*ft_push_half2a(t_pile *pile, t_dope *sol, int n)
-{
-	int		n_push;
-	int		n_rotate;
-	int		median;
-	int		half;
-
-	n_push = 0;
-	n_rotate = 0;
-	half = n / 2 + n % 2;
-	median = ft_findmedian(*pile, BPILE, n);
-	while (n_push < half)
-	{
-		if (pile->b->n > median)
-		{
-			pile = ft_add_ope(sol, pile, PA);
-			n_push++;
-		}
-		else
-		{
-			pile = ft_add_ope(sol, pile, NRB);
-			n_rotate++;
-		}
-		if (pile == NULL)
-			return (NULL);
-	}
-	while (n_rotate-- > 0)
-	{
-		if (!(pile = ft_add_ope(sol, pile, RRB)))
-			return (NULL);
-	}
-	return (pile);
-}
-
-t_pile *ft_push_half(t_pile *pile, t_dope *sol, int pd, int n)
-{
-	if (pd == APILE)
-		return (ft_push_half2b(pile, sol, n));
-	else
-		return (ft_push_half2a(pile, sol, n));
 }

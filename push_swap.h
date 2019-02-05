@@ -52,7 +52,7 @@ int					ft_error(int i);
 t_dope  *ft_get_solution(t_pile *pile, int n);
 void    ft_print_solution(t_dope *sol);
 
-t_pile *ft_push_half(t_pile *pile, t_dope *sol, int pd, int n);
+t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n);
 
 int		ft_pile_is_sorted(t_pile *pile, t_dope *sol);
 

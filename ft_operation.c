@@ -49,16 +49,16 @@ t_opp	*ft_define_ope(void)
 
 	if (!(tab = malloc(sizeof(t_opp) * 11)))
 		return (NULL);
-	tab[0] = (t_opp){.type = "sa", .fct = &ft_sa};
-	tab[1] = (t_opp){.type = "sb", .fct = &ft_sb};
-	tab[2] = (t_opp){.type = "ss", .fct = &ft_ss};
-	tab[3] = (t_opp){.type = "pa", .fct = &ft_pa};
-	tab[4] = (t_opp){.type = "pb", .fct = &ft_pb};
-	tab[5] = (t_opp){.type = "ra", .fct = &ft_ra};
-	tab[6] = (t_opp){.type = "rb", .fct = &ft_rb};
-	tab[7] = (t_opp){.type = "rr", .fct = &ft_rr};
+	tab[0] = (t_opp){.type = "rrb", .fct = &ft_rrb};
+	tab[1] = (t_opp){.type = "rb", .fct = &ft_rb};
+	tab[2] = (t_opp){.type = "pb", .fct = &ft_pb};
+	tab[3] = (t_opp){.type = "sb", .fct = &ft_sb};
+	tab[4] = (t_opp){.type = "ss", .fct = &ft_ss};
+	tab[5] = (t_opp){.type = "sa", .fct = &ft_sa};
+	tab[6] = (t_opp){.type = "pa", .fct = &ft_pa};
+	tab[7] = (t_opp){.type = "ra", .fct = &ft_ra};
 	tab[8] = (t_opp){.type = "rra", .fct = &ft_rra};
-	tab[9] = (t_opp){.type = "rrb", .fct = &ft_rrb};
+	tab[9] = (t_opp){.type = "rr", .fct = &ft_rr};
 	tab[10] = (t_opp){.type = "rrr", .fct = &ft_rrr};
 	return (tab);
 }
@@ -80,16 +80,18 @@ t_pile	*ft_doope(t_pile *pile, char *line, t_opp *tab)
 t_pile	*ft_add_ope(t_dope *sol, t_pile *pile, int id)
 {
 	t_lope	*new;
+	int		new_id;
 	static t_opp	*opptab = NULL;
 	
 	if (opptab == NULL)
 		opptab = ft_define_ope();
 	if (!(new = malloc(sizeof(t_lope))))
 		return (NULL);
-	new->id = id;
+	new_id = id + 4;
+	new->id = new_id;
 	new->next = NULL;
 	sol->tail->next = new;
 	sol->tail = new;
-	pile = opptab[id].fct(pile);
+	pile = opptab[new_id].fct(pile);
 	return (pile);
 }
