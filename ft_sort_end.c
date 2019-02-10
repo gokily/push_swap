@@ -5,10 +5,10 @@ t_pile *ft_sort_four(t_pile *pile, t_dope *sol, int pd)
 {
   if (!(pile = ft_push_half2pd(pile, sol, -pd, 4)))
     return (NULL);
-  if (ft_pile_is_sorted(pile, sol))
-    return (pile);
   if (pile == NULL)
     return (NULL);
+  if (ft_pile_is_sorted(pile, sol))
+    return (pile);
   if (pile->a->n > pile->a->next->n)
   {
     if (pile->b->n < pile->b->next->n)
