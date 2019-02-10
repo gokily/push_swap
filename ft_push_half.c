@@ -12,22 +12,6 @@
 
 #include "push_swap.h"
 #include "ps_operation.h"
-int		ft_length_half(t_pile *pile, int pd)
-{
-	int		length;
-	t_lnum	*stack;
-
-	length = 0;
-	stack = pd == APILE ? pile->a : pile->b;
-	if (stack == NULL)
-		return (0);
-	while (stack != NULL)
-	{
-		length++;
-		stack = stack->next;
-	}
-	return (length);
-}
 
 int		ft_findmedian(t_pile pile, int pd, int n)
 {
@@ -75,7 +59,7 @@ t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 		if (pile == NULL)
 			return (NULL);
 	}
-	if (ft_length_half(pile, -pd) == n - half)
+	if (ft_length_stack(pile, -pd) == n - half)
 		return (pile);
 	while (n_rotate-- > 0)
 	{

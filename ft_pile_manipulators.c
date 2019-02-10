@@ -11,6 +11,24 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ps_operation.h"
+
+int		ft_length_stack(t_pile *pile, int pd)
+{
+	int		length;
+	t_lnum	*stack;
+
+	length = 0;
+	stack = pd == APILE ? pile->a : pile->b;
+	if (stack == NULL)
+		return (0);
+	while (stack != NULL)
+	{
+		length++;
+		stack = stack->next;
+	}
+	return (length);
+}
 
 void	ft_free_pile(t_pile pile)
 {
