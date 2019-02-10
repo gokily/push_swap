@@ -7,8 +7,6 @@ t_pile *ft_sort_four(t_pile *pile, t_dope *sol, int pd)
     return (NULL);
   if (pile == NULL)
     return (NULL);
-  if (ft_pile_is_sorted(pile, sol))
-    return (pile);
   if (pile->a->n > pile->a->next->n)
   {
     if (pile->b->n < pile->b->next->n)
@@ -31,8 +29,6 @@ t_pile *ft_sort_five(t_pile *pile, t_dope *sol, int pd)
   if (pile->b->n < pile->b->next->n)
     bswap = 1;
   pile = ft_sort_three(pile, sol, APILE, bswap);
-  pile = ft_add_ope(sol, pile, PA);
-  pile = ft_add_ope(sol, pile, PA);
   return (pile);
 }
 
