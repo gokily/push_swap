@@ -23,14 +23,14 @@ t_pile *ft_sort_four(t_pile *pile, t_dope *sol, int pd)
 
 t_pile *ft_sort_five(t_pile *pile, t_dope *sol, int pd)
 {
-  int flag;
+  int bswap;
 
-  flag = 0;
+  bswap = 0;
   if (!(pile = ft_push_half2pd(pile, sol, -pd, 5)))
     return (NULL);
   if (pile->b->n < pile->b->next->n)
-    flag = 1;
-  pile = ft_sort_three(pile, sol, APILE, flag);
+    bswap = 1;
+  pile = ft_sort_three(pile, sol, APILE, bswap);
   pile = ft_add_ope(sol, pile, PA);
   pile = ft_add_ope(sol, pile, PA);
   return (pile);
