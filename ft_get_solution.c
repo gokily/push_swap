@@ -15,12 +15,14 @@
 
 int		ft_sort_pile(t_pile *pile, t_dope *sol, int pd, int n)
 {
-	//printf("Sorting fd =%d, and n is %d\n", pd, n);
 	if (ft_pile_is_sorted(pile, sol))
 		return (1);
 	if (n <= 5)
 	{
-		pile = ft_sort_end(pile, sol, pd, n);
+		if (n == 2)
+			pile = ft_add_ope(sol, pile, SA);
+		else
+			pile = ft_sort_end(pile, sol, pd, n);
 		return (pile == NULL ? 0 : 1);
 	}
 	if (!ft_push_half2pd(pile, sol, -pd, n) ||
@@ -47,6 +49,5 @@ t_dope	*ft_get_solution(t_pile *pile, int n)
 	sol->tail = first;
 	if (!(ft_sort_pile(pile, sol, APILE, n)))
 		return (NULL);
-	//print_pile(*pile);
 	return (sol);
 }
