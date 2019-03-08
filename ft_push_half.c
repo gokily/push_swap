@@ -6,14 +6,14 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:06:15 by gly               #+#    #+#             */
-/*   Updated: 2019/02/21 12:12:30 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/08 09:08:04 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ps_operation.h"
 
-static int	ft_findmedian(t_pile pile, int pd, int n)
+static int		ft_findmedian(t_pile pile, int pd, int n)
 {
 	t_lnum	*lst;
 	int		sorted[n];
@@ -33,7 +33,15 @@ static int	ft_findmedian(t_pile pile, int pd, int n)
 	return (median);
 }
 
-t_pile		*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
+static t_pile	*ft_rrot_n(t_dope *sol, t_pile *pile, int pd, int n)
+{
+	while (n-- > 0)
+		if (!(pile = ft_add_ope(sol, pile, RROT * pd)))
+			return (NULL);
+	return (pile);
+}
+
+t_pile			*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 {
 	int		median;
 	int		half;
@@ -51,20 +59,12 @@ t_pile		*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 			pile = ft_add_ope(sol, pile, PUSH * pd);
 			n_push++;
 		}
-		else
-		{
+		else if (++n_rotate != 0)
 			pile = ft_add_ope(sol, pile, NROT * -pd);
-			n_rotate++;
-		}
 		if (pile == NULL)
 			return (NULL);
 	}
-	if (ft_length_stack(pile, -pd) == n - half)
-		return (pile);
-	while (n_rotate-- > 0)
-	{
-		if (!(pile = ft_add_ope(sol, pile, RROT * -pd)))
-			return (NULL);
-	}
+	if (ft_length_stack(pile, -pd) != n - half)
+		pile = ft_rrot_n(sol, pile, -pd, n_rotate);
 	return (pile);
 }
