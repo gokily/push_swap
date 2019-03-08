@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lnum_manipulators.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/21 11:28:55 by gly               #+#    #+#             */
+/*   Updated: 2019/02/21 11:29:50 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_lnum	*ft_lnum_new(int n)
@@ -24,51 +36,6 @@ void	ft_addback_lnum(t_lnum **lst, t_lnum *elem)
 	while (last->next != NULL)
 		last = last->next;
 	last->next = elem;
-	return ;
-}
-
-void	ft_lnum_swap_top(t_lnum	*lst)
-{
-	int		tmp;
-
-	if (lst != NULL && lst->next != NULL)
-	{
-		tmp = lst->n;
-		lst->n = lst->next->n;
-		lst->next->n = tmp;
-	}
-	return ;
-}
-
-void	ft_lnum_rotate(t_lnum **lst)
-{
-	t_lnum	*tmp;
-
-	tmp = *lst;
-	if (tmp != NULL && tmp->next != NULL)
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = *lst;
-		*lst = (*lst)->next;
-		tmp->next->next = NULL;
-	}
-	return ;
-}
-
-void	ft_lnum_rrotate(t_lnum **lst)
-{
-	t_lnum	*tmp;
-
-	tmp = *lst;
-	if (tmp != NULL && tmp->next != NULL)
-	{
-		while (tmp->next->next != NULL)
-			tmp = tmp->next;
-		tmp->next->next = *lst;
-		*lst = tmp->next;
-		tmp->next = NULL;
-	}
 	return ;
 }
 

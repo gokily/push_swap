@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:21:17 by gly               #+#    #+#             */
-/*   Updated: 2019/01/10 12:51:00 by gly              ###   ########.fr       */
+/*   Updated: 2019/02/21 16:12:31 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int		ps_next_line(const int fd, char **line)
 	}
 	ft_freenode(&lst_fdrst, fd);
 	if (ft_strlen(*line) > 0)
-		ret = -1;		
+		ret = -1;
 	ft_strdel(line);
 	return (ret);
 }

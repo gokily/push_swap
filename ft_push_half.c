@@ -6,14 +6,14 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:06:15 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 17:41:49 by gly              ###   ########.fr       */
+/*   Updated: 2019/02/21 12:12:30 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ps_operation.h"
 
-int		ft_findmedian(t_pile pile, int pd, int n)
+static int	ft_findmedian(t_pile pile, int pd, int n)
 {
 	t_lnum	*lst;
 	int		sorted[n];
@@ -33,7 +33,7 @@ int		ft_findmedian(t_pile pile, int pd, int n)
 	return (median);
 }
 
-t_pile	*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
+t_pile		*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n)
 {
 	int		median;
 	int		half;

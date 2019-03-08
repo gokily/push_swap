@@ -7,6 +7,7 @@ SRC	=	ft_checker.c	\
 		ft_pile_manipulators.c	\
 		ft_error.c	\
 		ft_lnum_manipulators.c	\
+		ft_lnum_manipulators2.c	\
 		ft_operation.c	\
 		ft_operation_s.c	\
 		ft_operation_p.c	\
@@ -33,6 +34,7 @@ CHECKER_O	=	ft_checker.o	\
 				ft_pile_manipulators.o	\
 				ft_error.o	\
 				ft_lnum_manipulators.o	\
+				ft_lnum_manipulators2.o	\
 				ft_operation.o	\
 				ft_operation_s.o	\
 				ft_operation_p.o	\
@@ -44,6 +46,7 @@ CHECKER_O	=	ft_checker.o	\
 PUSHSWAP_O	=	ft_get_solution.o	\
 				ft_error.o	\
 				ft_lnum_manipulators.o	\
+				ft_lnum_manipulators2.o	\
 				ft_operation.o	\
 				ft_operation_s.o	\
 				ft_operation_p.o	\

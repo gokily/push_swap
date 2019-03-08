@@ -6,17 +6,17 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 15:40:48 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 15:43:52 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/08 08:41:25 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_int_array(const char *str)
+static int	ft_int_array(const char *str)
 {
-	int		i;
-	long 	long nb;
-	int		sign;
+	int			i;
+	long long	nb;
+	int			sign;
 
 	i = 0;
 	nb = 0;
@@ -29,7 +29,7 @@ int		ft_int_array(const char *str)
 		return (0);
 	while (str[i] != '\0')
 	{
-		if (str[i] < '0' && str[i] > '9')
+		if (str[i] < '0' || str[i] > '9')
 			return (0);
 		nb *= 10;
 		nb += str[i] - 48;
@@ -41,7 +41,7 @@ int		ft_int_array(const char *str)
 	return (1);
 }
 
-int		ft_validarg(int ac, char **av)
+int			ft_validarg(int ac, char **av)
 {
 	int			i;
 	int			j;
@@ -68,7 +68,7 @@ int		ft_validarg(int ac, char **av)
 	return (1);
 }
 
-t_lnum	*ft_read_arg(int ac, char **av)
+t_lnum		*ft_read_arg(int ac, char **av)
 {
 	int		i;
 	t_lnum	*lst;

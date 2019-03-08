@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:15:05 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 15:10:48 by gly              ###   ########.fr       */
+/*   Updated: 2019/02/21 12:06:52 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ps_operation.h"
 #include <stdlib.h>
 
-int			ft_validope(char *line)
+int		ft_validope(char *line)
 {
 	if (ft_strcmp(line, "sa") == 0)
 		return (1);
@@ -79,10 +79,10 @@ t_pile	*ft_doope(t_pile *pile, char *line, t_opp *tab)
 
 t_pile	*ft_add_ope(t_dope *sol, t_pile *pile, int id)
 {
-	t_lope	*new;
-	int		new_id;
+	t_lope			*new;
+	int				new_id;
 	static t_opp	*opptab = NULL;
-	
+
 	if (opptab == NULL)
 		opptab = ft_define_ope();
 	if (pile == NULL)
