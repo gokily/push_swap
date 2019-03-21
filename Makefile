@@ -25,8 +25,8 @@ SRC	=	ft_checker.c	\
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g
-#CFLAGS	=	-Wall -Wextra -Werror -g
+SANI	=	-fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g
 
 OBJ = $(SRC:.c=.o)
 
