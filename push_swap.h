@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:13:25 by gly               #+#    #+#             */
-/*   Updated: 2019/03/21 09:27:39 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 10:12:12 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-
-#include <stdio.h>
 
 typedef struct		s_lnum
 {
@@ -71,13 +69,5 @@ int					ft_pile_is_sorted(t_pile *pile, t_dope *sol);
 
 t_pile				*ft_sort_end(t_pile *pile, t_dope *sol, int pd, int n);
 t_pile				*ft_sort_three(t_pile *pile, t_dope *sol, int pd, int flag);
-
-// These functions need to be included in the libft
-void				ft_sort_inttab(int *tab, int n);
-int					ft_int_is_bigger(int first, int second);
-int					ft_int_is_smaller(int first, int second);
-
-// Debug function
-void  				print_pile(t_pile pile);
 
 #endif

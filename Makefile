@@ -73,10 +73,10 @@ all: $(LIBFT) $(CHECKER) $(PUSH_SWAP)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(CHECKER): $(CHECKER_O)
-	$(CC) $(CFLAGS) -o $(CHECKER) $(CHECKER_O) $(LIBFTFLAG) print_pile.c
+	$(CC) $(CFLAGS) -o $(CHECKER) $(CHECKER_O) $(LIBFTFLAG)
 
 $(PUSH_SWAP): $(PUSHSWAP_O)
-	$(CC) $(CFLAGS) -o $(PUSH_SWAP) $(PUSHSWAP_O) $(LIBFTFLAG) ft_sort_inttab.c ft_int_comparators.c print_pile.c
+	$(CC) $(CFLAGS) -o $(PUSH_SWAP) $(PUSHSWAP_O) $(LIBFTFLAG)
 
 $(LIBFT):
 	make -C libft
