@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 15:40:48 by gly               #+#    #+#             */
-/*   Updated: 2019/03/08 08:41:25 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 16:53:57 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static int	ft_int_array(const char *str)
 	i = 0;
 	nb = 0;
 	sign = str[i] == '-' ? -1 : 1;
-	if (ft_strlen(str) > 11)
-		return (0);
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (str[i] == '\0')
@@ -33,55 +31,59 @@ static int	ft_int_array(const char *str)
 			return (0);
 		nb *= 10;
 		nb += str[i] - 48;
-		i++;
-	}
-	nb *= sign;
-	if (nb > INT_MAX || nb < INT_MIN)
-		return (0);
-	return (1);
-}
-
-int			ft_validarg(int ac, char **av)
-{
-	int			i;
-	int			j;
-
-	i = 1;
-	while (i < ac)
-	{
-		if (ft_int_array(av[i]) == 0)
+		if ((sign == 1 && nb > INT_MAX) || (sign == -1 && nb < INT_MIN))
 			return (0);
 		i++;
 	}
-	i = 1;
-	while (i < ac - 1)
-	{
-		j = i + 1;
-		while (j < ac)
-		{
-			if (ft_strcmp(av[i], av[j]) == 0)
-				return (0);
-			j++;
-		}
-		i++;
-	}
+	nb *= sign;
 	return (1);
+}
+
+static int	ft_check_double(t_lnum *lst)
+{
+	t_lnum	*other;
+
+	if (lst == NULL)
+		return (1);
+	while (lst->next != NULL)
+	{
+		other = lst->next;
+		while (other != NULL)
+		{
+			if (lst->n == other->n)
+				return (1);
+			other = other->next;
+		}
+		lst = lst->next;
+	}
+	return (0);
 }
 
 t_lnum		*ft_read_arg(int ac, char **av)
 {
 	int		i;
+	int		n;
 	t_lnum	*lst;
 	t_lnum	*elem;
+	char	**tab;
 
 	i = 1;
 	lst = NULL;
 	while (i < ac)
 	{
-		if (!(elem = ft_lnum_new(ft_atoi(av[i]))))
-			return (NULL);
-		ft_addback_lnum(&lst, elem);
+		tab = ft_strsplit(av[i], ' ');
+		n = 0;
+		while (tab[n] != 0)
+		{
+			if (!ft_int_array(tab[n]) || !(elem = ft_lnum_new(ft_atoi(tab[n]))))
+				ft_free_exit(lst);
+			ft_addback_lnum(&lst, elem);
+			n++;
+		}
+		ft_free_strtab(tab);
 		i++;
 	}
+	if (ft_check_double(lst) == 1)
+		ft_free_exit(lst);
 	return (lst);
 }

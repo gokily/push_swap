@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:13:25 by gly               #+#    #+#             */
-/*   Updated: 2019/03/21 10:12:12 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 16:52:49 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct		s_dope
 void				ft_error(int i);
 
 t_lnum				*ft_read_arg(int ac, char **av);
-int					ft_validarg(int ac, char **av);
+void				ft_free_exit(t_lnum *lst);
 int					ps_next_line(const int fd, char **line);
 
 t_lnum				*ft_lnum_new(int n);
@@ -53,6 +53,7 @@ void				ft_lnum_rotate(t_lnum **lst);
 void				ft_lnum_rrotate(t_lnum **lst);
 void				ft_addback_lnum(t_lnum **lst, t_lnum *elem);
 int					ft_lnum_is_sort(t_lnum *lst);
+int					ft_lnum_length(t_lnum *lst);
 void				ft_lnum_delall(t_lnum *lst);
 
 int					ft_checkpile(t_pile pile);

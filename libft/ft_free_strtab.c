@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap.c                                      :+:      :+:    :+:   */
+/*   ft_free_strtab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 10:04:52 by gly               #+#    #+#             */
-/*   Updated: 2019/03/21 16:42:02 by gly              ###   ########.fr       */
+/*   Created: 2019/03/21 16:23:35 by gly               #+#    #+#             */
+/*   Updated: 2019/03/21 16:26:11 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdlib.h>
 
-int		main(int ac, char **av)
+int		ft_free_strtab(char **tab)
 {
-	t_lnum	*lst;
-	t_pile	pile;
-	t_dope	*sol;
+	int		i;
 
-	if (ac == 1)
-		return (1);
-	if (!(lst = ft_read_arg(ac, av)))
-		ft_error(1);
-	pile.a = lst;
-	pile.b = NULL;
-	sol = ft_get_solution(&pile, ft_lnum_length(lst));
-	ft_print_solution(sol);
-	ft_free_t_dope(sol);
-	ft_free_pile(pile);
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
 	return (1);
 }

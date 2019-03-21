@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 11:28:55 by gly               #+#    #+#             */
-/*   Updated: 2019/02/21 11:29:50 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 16:39:45 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ int		ft_lnum_is_sort(t_lnum *lst)
 		lst = lst->next;
 	}
 	return (1);
+}
+
+int		ft_lnum_length(t_lnum *lst)
+{
+	int		i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 
 void	ft_lnum_delall(t_lnum *lst)

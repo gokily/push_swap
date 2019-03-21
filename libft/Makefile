@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 13:31:32 by gly               #+#    #+#              #
-#    Updated: 2019/03/21 10:10:04 by gly              ###   ########.fr        #
+#    Updated: 2019/03/21 16:28:16 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC = ft_atoi.c		ft_bzero.c		ft_isalnum.c	\
 	  ft_round_double.c	\
 	  ft_sort_inttab.c	\
 	  ft_int_comparators.c	\
+	  ft_free_strtab.c	\
 	  get_next_line.c	\
 
 all: $(NAME)

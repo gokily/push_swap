@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 11:22:57 by gly               #+#    #+#             */
-/*   Updated: 2019/02/21 11:27:26 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 16:46:38 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@ void	ft_error(int i)
 {
 	if (i == 1 || i == 2)
 	{
-		ft_putendl("Error");
+		ft_putendl_fd("Error", 2);
 		exit(1);
 	}
 	exit(1);
+}
+
+void	ft_free_exit(t_lnum *lst)
+{
+	ft_lnum_delall(lst);
+	ft_error(1);
 }
