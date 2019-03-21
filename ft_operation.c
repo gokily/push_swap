@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:15:05 by gly               #+#    #+#             */
-/*   Updated: 2019/02/21 12:06:52 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 09:49:29 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ t_pile	*ft_add_ope(t_dope *sol, t_pile *pile, int id)
 	int				new_id;
 	static t_opp	*opptab = NULL;
 
+	if (sol == NULL)
+	{
+		free(opptab);
+		opptab = NULL;
+		return (NULL);
+	}
 	if (opptab == NULL)
 		opptab = ft_define_ope();
 	if (pile == NULL)

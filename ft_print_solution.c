@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 15:34:55 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 15:38:20 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 09:43:13 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	ft_print_solution(t_dope *sol)
 		ft_putendl(opptab[elem->id].type);
 		elem = elem->next;
 	}
+	free(opptab);
+	opptab = NULL;
 }

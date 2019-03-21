@@ -16,6 +16,7 @@ SRC	=	ft_checker.c	\
 		ps_next_line.c	\
 		ft_parse_arg.c	\
 		ft_print_solution.c	\
+		ft_free_end.c	\
 		ft_get_solution.c	\
 		ft_push_half.c	\
 		ft_pushswap.c	\
@@ -57,6 +58,7 @@ PUSHSWAP_O	=	ft_get_solution.o	\
 				ft_pushswap.o	\
 				ft_parse_arg.o	\
 				ft_print_solution.o	\
+				ft_free_end.o	\
 				ft_pile_is_sorted.o	\
 				ft_sort_end.o	\
 				ft_sort_three.o	\

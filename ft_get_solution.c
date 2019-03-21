@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 10:17:20 by gly               #+#    #+#             */
-/*   Updated: 2019/01/11 17:34:13 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 09:50:04 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ t_dope	*ft_get_solution(t_pile *pile, int n)
 	sol->tail = first;
 	if (!(ft_sort_pile(pile, sol, APILE, n)))
 		return (NULL);
+	ft_add_ope(NULL, NULL, 0);
 	return (sol);
 }

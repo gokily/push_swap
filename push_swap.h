@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:13:25 by gly               #+#    #+#             */
-/*   Updated: 2019/03/08 08:38:45 by gly              ###   ########.fr       */
+/*   Updated: 2019/03/21 09:27:39 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int					ft_length_stack(t_pile *pile, int pd);
 
 t_dope				*ft_get_solution(t_pile *pile, int n);
 void				ft_print_solution(t_dope *sol);
+int					ft_free_t_dope(t_dope *sol);
 
 t_pile				*ft_push_half2pd(t_pile *pile, t_dope *sol, int pd, int n);
 

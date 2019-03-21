@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap.c                                      :+:      :+:    :+:   */
+/*   ft_free_end.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 10:04:52 by gly               #+#    #+#             */
-/*   Updated: 2019/03/21 09:53:22 by gly              ###   ########.fr       */
+/*   Created: 2019/03/21 09:29:12 by gly               #+#    #+#             */
+/*   Updated: 2019/03/21 09:41:47 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		main(int ac, char **av)
+int		ft_free_t_dope(t_dope *sol)
 {
-	t_lnum	*lst;
-	t_pile	pile;
-	t_dope	*sol;
+	t_lope	*elem;
+	t_lope	*next;
 
-	if (ac == 1)
+	if (sol == NULL)
 		return (1);
-	if (ft_validarg(ac, av) == 0)
-		ft_error(1);
-	if (!(lst = ft_read_arg(ac, av)))
-		ft_error(1);
-	pile.a = lst;
-	pile.b = NULL;
-	sol = ft_get_solution(&pile, ac - 1);
-	ft_print_solution(sol);
-	ft_free_t_dope(sol);
-	ft_free_pile(pile);
+	elem = sol->head;
+	while (elem != NULL)
+	{
+		next = elem->next;
+		free(elem);
+		elem = NULL;
+		elem = next;
+	}
+	free(sol);
+	sol = NULL;
 	return (1);
 }
